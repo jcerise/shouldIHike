@@ -16,8 +16,4 @@
             test
             view (type: "url" etc. "text/html"?)
     */
-
-  jQuery('#when').datetimepicker({
-    pickDate: false
-  });
 })(jQuery);

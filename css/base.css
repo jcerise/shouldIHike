@@ -126,9 +126,7 @@ footer {
 }
 
 /* Should I Go Hiking Styles */
-input#location,
-input#when,
-input#how-long {
+input#location {
     height: 40px;
     width: 100%;
 }
