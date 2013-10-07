@@ -124,3 +124,17 @@ footer {
 [role="toolbar"] li button.update {
     background-image: url("../images/toolbars/icons/update.png");
 }
+
+/* Should I Go Hiking Styles */
+input#location,
+input#when,
+input#how-long {
+    height: 40px;
+    width: 100%;
+}
+
+.hiking-submit {
+    margin-top: 40px;
+    width: 100%;
+    height: 60px;
+}
