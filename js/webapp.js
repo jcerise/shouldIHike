@@ -1,4 +1,14 @@
 (function ($) {
+  //Setup brick components
+  document.addEventListener('DOMComponentsLoaded', function(){
+    $(".settings-link").click(function(e) {
+      e.preventDefault();
+      //Using jQuery for this selector breaks the Brick functions, as it attempts to use the jQuery toggle instead
+      var flipBox = document.querySelector( "x-flipBox" );
+      flipBox.toggle();
+    });
+  });
+
   //Setup an onclick event for the submit button
   $("#submit").click(function(e) {
     e.preventDefault();

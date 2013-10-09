@@ -16,11 +16,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/brick-1.0beta8.css">
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" type="text/css" href="css/headers.css">
     <link rel="stylesheet" type="text/css" href="css/buttons.css">
     <link rel="stylesheet" type="text/css" href="css/toolbars.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
     <title>Firefox OS Boilerplate App</title>
 </head>
 
@@ -28,28 +28,35 @@
 
     <section role="region">
         <header>
-            <h1>
+            <a href="#" class="pull-right settings-link"><span class="glyphicon glyphicon-cog pull-right"/></a>
+            <h1 class="pull-left">
                 Should I Hike?
+
             </h1>
         </header>
     </section>
 
+    <x-flipbox>
+        <div id="main">
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="location">Where are you going hiking?</label>
+                    <div class="controls">
+                        <input type="text" id="location" placeholder="Where?">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="submit" class="btn btn-primary hiking-submit" id="submit" value="Should I go Hiking?">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="settings page-header">
+            <h2 class="text-center">Settings</h2>
+        </div>
+    </x-flipbox>
 
-    <div id="main">
-        <form class="form-horizontal" data-ng-submit="create()">
-            <div class="control-group">
-                <label class="control-label" for="location">Where are you going hiking?</label>
-                <div class="controls">
-                    <input type="text" id="location" placeholder="Where?">
-                </div>
-            </div>
-            <div class="control-group">
-                <div class="controls">
-                    <input type="submit" class="btn btn-primary hiking-submit" id="submit" value="Should I go Hiking?">
-                </div>
-            </div>
-        </form>
-    </div>
 
     <footer>
     </footer>
@@ -57,6 +64,7 @@
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/libraries/jquery.min.js"></script>
     <script type="text/javascript" src="js/libraries/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/libraries/brick-1.0beta8.js"></script>
     <script type="text/javascript" src="js/base.js"></script>
     <script type="text/javascript" src="js/webapp.js"></script>
     <script type="text/javascript" src="js/offline.js"></script>
