@@ -37,7 +37,7 @@
     </section>
 
     <x-flipbox>
-        <div id="main">
+        <div class="main">
             <form class="form-horizontal">
                 <div class="control-group">
                     <label class="control-label" for="location">Where are you going hiking?</label>
@@ -53,7 +53,39 @@
             </form>
         </div>
         <div id="settings page-header">
-            <h2 class="text-center">Settings</h2>
+            <div class="main">
+                <h2 class="text-center">Settings</h2>
+                <div class="no-local-storage">
+                    <p class="text-center">Your device or browser does not seem to support local storage. </p>
+                    <p class="text-center">You will not be able to save any settings.</p>
+                    <p class="text-center">Sorry :(</p>
+                </div>
+                <form class="form-horizontal settings-form">
+                    <div class="control-group">
+                        <label class="control-label" for="temp-threshold">Temperature Threshold</label>
+                        <div class="controls">
+                            <input type="text" id="temp-threshold" placeholder="Temp Threshold">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="weather-tolerance">Inclement Weather Tolerance</label>
+                        <div class="controls">
+                            <select id="weather-tolerance">
+                                <option>Very Low</option>
+                                <option>Low</option>
+                                <option>Average</option>
+                                <option>High</option>
+                                <option>Very High</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <input type="submit" class="btn btn-primary" id="settings-submit" value="Save Settings">
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </x-flipbox>
 
@@ -62,6 +94,7 @@
     </footer>
 
     <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/libraries/async_storage.js"></script>
     <script type="text/javascript" src="js/libraries/jquery.min.js"></script>
     <script type="text/javascript" src="js/libraries/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/libraries/brick-1.0beta8.js"></script>

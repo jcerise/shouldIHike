@@ -78,15 +78,15 @@ header.show-install h1 {
     background: #ff0000;
 }
 
-#main {
+.main {
     padding: 1rem 1rem 6rem 1rem;
 }
 
-#main h2 {
+.main h2 {
     margin: 0 0 1rem;
 }
 
-#main img {
+.main img {
     max-width: 100%;
 }
 
@@ -103,7 +103,7 @@ header.show-install h1 {
     margin-bottom: 10px;
 }
 
-#main button {
+.main button {
     display: inline-block;
     width: 49%;
     vertical-align: top;
@@ -126,12 +126,14 @@ footer {
 }
 
 /* Should I Go Hiking Styles */
-input#location {
+input,
+select {
     height: 40px;
     width: 100%;
 }
 
-.hiking-submit {
+.hiking-submit,
+#settings-submit {
     margin-top: 40px;
     width: 100%;
     height: 60px;
