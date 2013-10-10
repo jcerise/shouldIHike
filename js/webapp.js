@@ -45,7 +45,15 @@
       success : function(parsed_json) {
         var location = parsed_json['location']['city'];
         var temp_f = parsed_json['current_observation']['temp_f'];
-        alert("Current temperature in " + location + " is: " + temp_f);
+
+        //Do some very simple testing of the temp data against the set threshold, if available
+        asyncStorage.getItem('temp-threshold', function(value) {
+          if (value > temp_f) {
+            alert('You should probably not go hiking. Its cold there...');
+          } else {
+            alert('You should go hiking!');
+          }
+        });
       },
       error : function(e) {
         alert('Request failed...');
