@@ -3,6 +3,15 @@
   document.addEventListener('DOMComponentsLoaded', function(){
     $(".settings-link").click(function(e) {
       e.preventDefault();
+
+      if ($('span', this).hasClass("glyphicon-cog")) {
+        $('span', this).removeClass("glyphicon-cog");
+        $('span', this).addClass("glyphicon-home");
+      } else {
+        $('span', this).removeClass("glyphicon-home");
+        $('span', this).addClass("glyphicon-cog");
+      }
+
       //Using jQuery for this selector breaks the Brick functions, as it attempts to use the jQuery toggle instead
       var flipBox = document.querySelector( "x-flipBox" );
       flipBox.toggle();
