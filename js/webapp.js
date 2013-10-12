@@ -4,22 +4,19 @@
     $(".settings-link").click(function(e) {
       e.preventDefault();
 
-      if ($('span', this).hasClass("glyphicon-cog")) {
-        $('span', this).removeClass("glyphicon-cog");
-        $('span', this).addClass("glyphicon-home");
-      } else {
-        $('span', this).removeClass("glyphicon-home");
-        $('span', this).addClass("glyphicon-cog");
-      }
+      toggle_settings_icon();
 
       //Using jQuery for this selector breaks the Brick functions, as it attempts to use the jQuery toggle instead
-      var flipBox = document.querySelector( "x-flipBox" );
-      flipBox.toggle();
+      var deck = document.querySelector( "x-deck" );
+      var currentCard = deck.getCardIndex(deck.getSelectedCard());
+      if (currentCard == 0) {
+        deck.shuffleTo(1);
+      } else {
+        deck.shuffleTo(0);
+      }
     });
   });
 
-  //check for local storage
-  var localStorage = supports_html5_storage();
 
   if (localStorage) {
     //User has local storage available, show settings form
@@ -83,16 +80,38 @@
 
     alert("Settings saved!");
 
-    //Trigger the flipbox to take the user back to the main page
-    var flipBox = document.querySelector( "x-flipBox" );
-    flipBox.toggle();
-  })
-})(jQuery);
+    //Trigger the shuffle to take the user back to the main page
+    //First, set the settings icon correctly
+    toggle_settings_icon();
+    var deck = document.querySelector( "x-deck" );
+    deck.shuffleTo(0);
+  });
 
-function supports_html5_storage() {
-  try {
-    return 'localStorage' in window && window['localStorage'] !== null;
-  } catch (e) {
-    return false;
+  /**
+   * Checks if the localStorage API is available or not
+   * @returns {boolean} True if the browser can use localStorage
+   */
+  function supports_html5_storage() {
+    try {
+      return 'localStorage' in window && window['localStorage'] !== null;
+    } catch (e) {
+      return false;
+    }
   }
-}
+
+  /**
+   * Toggles the settings icon based on its current state
+   */
+  function toggle_settings_icon() {
+
+    var settingsButton = $('.settings-link span');
+
+    if (settingsButton.hasClass("glyphicon-cog")) {
+      settingsButton.removeClass("glyphicon-cog");
+      settingsButton.addClass("glyphicon-home");
+    } else {
+      settingsButton.removeClass("glyphicon-home");
+      settingsButton.addClass("glyphicon-cog");
+    }
+  }
+})(jQuery);

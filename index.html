@@ -36,58 +36,66 @@
         </header>
     </section>
 
-    <x-flipbox>
-        <div class="main">
-            <form class="form-horizontal">
-                <div class="control-group">
-                    <label class="control-label" for="location">Where are you going hiking?</label>
-                    <div class="controls">
-                        <input type="text" id="location" placeholder="Where?">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <div class="controls">
-                        <input type="submit" class="btn btn-primary hiking-submit" id="submit" value="Should I go Hiking?">
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div id="settings page-header">
-            <div class="main">
-                <h2 class="text-center">Settings</h2>
-                <div class="no-local-storage">
-                    <p class="text-center">Your device or browser does not seem to support local storage. </p>
-                    <p class="text-center">You will not be able to save any settings.</p>
-                    <p class="text-center">Sorry :(</p>
-                </div>
-                <form class="form-horizontal settings-form">
+    <x-deck>
+        <x-card>
+            <!-- Main menu card -->
+            <div class="main home">
+                <form class="form-horizontal">
                     <div class="control-group">
-                        <label class="control-label" for="temp-threshold">Temperature Threshold</label>
+                        <label class="control-label" for="location">Where are you going hiking?</label>
                         <div class="controls">
-                            <input type="text" id="temp-threshold" placeholder="Temp Threshold">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="weather-tolerance">Inclement Weather Tolerance</label>
-                        <div class="controls">
-                            <select id="weather-tolerance">
-                                <option>Very Low</option>
-                                <option>Low</option>
-                                <option>Average</option>
-                                <option>High</option>
-                                <option>Very High</option>
-                            </select>
+                            <input type="text" id="location" placeholder="Where?">
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="controls">
-                            <input type="submit" class="btn btn-primary" id="settings-submit" value="Save Settings">
+                            <input type="submit" class="btn btn-primary hiking-submit" id="submit" value="Should I go Hiking?">
                         </div>
                     </div>
                 </form>
             </div>
-        </div>
-    </x-flipbox>
+        </x-card>
+
+        <x-card>
+            <!-- Settings menu card -->
+            <div id="settings page-header">
+                <div class="main settings-page">
+                    <h2 class="text-center">Settings</h2>
+                    <div class="no-local-storage">
+                        <p class="text-center">Your device or browser does not seem to support local storage. </p>
+                        <p class="text-center">You will not be able to save any settings.</p>
+                        <p class="text-center">Sorry :(</p>
+                    </div>
+                    <form class="form-horizontal settings-form">
+                        <div class="control-group">
+                            <label class="control-label" for="temp-threshold">Temperature Threshold</label>
+                            <div class="controls">
+                                <input type="text" id="temp-threshold" placeholder="Temp Threshold">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="weather-tolerance">Inclement Weather Tolerance</label>
+                            <div class="controls">
+                                <select id="weather-tolerance">
+                                    <option>Very Low</option>
+                                    <option>Low</option>
+                                    <option>Average</option>
+                                    <option>High</option>
+                                    <option>Very High</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="submit" class="btn btn-primary" id="settings-submit" value="Save Settings">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </x-card>
+
+    </x-deck>
 
 
     <footer>
