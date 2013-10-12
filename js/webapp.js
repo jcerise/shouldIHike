@@ -9,7 +9,7 @@
       //Using jQuery for this selector breaks the Brick functions, as it attempts to use the jQuery toggle instead
       var deck = document.querySelector( "x-deck" );
       var currentCard = deck.getCardIndex(deck.getSelectedCard());
-      if (currentCard == 0) {
+      if (currentCard != 1) {
         deck.shuffleTo(1);
       } else {
         deck.shuffleTo(0);
@@ -41,30 +41,19 @@
     $(".no-local-storage").show();
   }
 
-  //Setup an onclick event for the submit button
+  //Setup an onclick event for the main submit button
   $("#submit").click(function(e) {
     e.preventDefault();
     var location = $("#location").val();
-    $.ajax({
-      url : "http://api.wunderground.com/api/" + config.wu_api_key + "/geolookup/conditions/q/" + location + ".json",
-      dataType : "jsonp",
-      success : function(parsed_json) {
-        var location = parsed_json['location']['city'];
-        var temp_f = parsed_json['current_observation']['temp_f'];
+    make_wunderground_request(location);
+  });
 
-        //Do some very simple testing of the temp data against the set threshold, if available
-        asyncStorage.getItem('temp-threshold', function(value) {
-          if (value > temp_f) {
-            alert('You should probably not go hiking. Its cold there...');
-          } else {
-            alert('You should go hiking!');
-          }
-        });
-      },
-      error : function(e) {
-        alert('Request failed...');
-      }
-    });
+  //Setup an onclick event for the location select submit button
+  $("#location-select-submit").click(function(e) {
+    e.preventDefault();
+    var location = $("#location-select").val();
+    make_wunderground_request(location);
+
   });
 
   //Setup a click handler for the save settings button - on click, save the state of the settings form to local storage
@@ -113,5 +102,47 @@
       settingsButton.removeClass("glyphicon-home");
       settingsButton.addClass("glyphicon-cog");
     }
+  }
+
+  /**
+   * Make a request to the wunderground service
+   * @param location The location to return weather information for
+   */
+  function make_wunderground_request(location) {
+    var deck = document.querySelector( "x-deck" );
+    $.ajax({
+      url : "http://api.wunderground.com/api/" + config.wu_api_key + "/geolookup/conditions/q/" + location + ".json",
+      dataType : "jsonp",
+      success : function(parsed_json) {
+        //Check to see if there are multiple locations returned. If there are, show the select location card
+        if (parsed_json['response']['results']) {
+          var locationSelect = $("#location-select");
+          locationSelect.empty();
+          $.each(parsed_json['response']['results'], function (index, value) {
+            var location = value.name + ', ' + value.state + ', ' + value.country;
+            locationSelect.append('<option value="'+value.zmw+'">' + location + '</option>');
+          });
+
+          deck.shuffleTo(2);
+        } else {
+          var location = parsed_json['location']['city'];
+          var temp_f = parsed_json['current_observation']['temp_f'];
+
+          //Do some very simple testing of the temp data against the set threshold, if available
+          asyncStorage.getItem('temp-threshold', function(value) {
+            if (value > temp_f) {
+              alert('You should probably not go hiking. Its cold there...');
+            } else {
+              alert('You should go hiking!');
+            }
+          });
+
+          deck.shuffleTo(0);
+        }
+      },
+      error : function(e) {
+        alert('Request failed...');
+      }
+    });
   }
 })(jQuery);

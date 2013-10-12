@@ -95,6 +95,28 @@
             </div>
         </x-card>
 
+        <x-card>
+            <div class="main location-select">
+                <h2 class="text-center">Multiple locations found...</h2>
+                <p class="text-center">Did you mean one of these...?</p>
+                <form class="form-horizontal location-select-form">
+                    <div class="control-group">
+                        <label class="control-label" for="location-select">Location Matches</label>
+                        <div class="controls">
+                            <select id="location-select">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <input type="submit" class="btn btn-primary" id="location-select-submit" value="Select">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </x-card>
+
     </x-deck>
 
 
