@@ -68,9 +68,13 @@
                     </div>
                     <form class="form-horizontal settings-form">
                         <div class="control-group">
-                            <label class="control-label" for="temp-threshold">Temperature Threshold</label>
+                            <label class="control-label" for="temp-threshold-cold">Temperature Threshold - Cold</label>
                             <div class="controls">
-                                <input type="text" id="temp-threshold" placeholder="Temp Threshold">
+                                <input type="text" id="temp-threshold-cold" placeholder="Temp Threshold - Cold">
+                            </div>
+                            <label class="control-label" for="temp-threshold-heat">Temperature Threshold - Heat</label>
+                            <div class="controls">
+                                <input type="text" id="temp-threshold-heat" placeholder="Temp Threshold - Heat">
                             </div>
                         </div>
                         <div class="control-group">
@@ -96,6 +100,7 @@
         </x-card>
 
         <x-card>
+            <!-- Location select card -->
             <div class="main location-select">
                 <h2 class="text-center">Multiple locations found...</h2>
                 <p class="text-center">Did you mean one of these...?</p>
@@ -114,6 +119,41 @@
                         </div>
                     </div>
                 </form>
+            </div>
+        </x-card>
+
+        <x-card>
+            <!-- Results card -->
+            <div class="main results">
+                <h2 class="text-center">Results</h2>
+                <div class="result-icon">
+                    <img class="weather-icon" src="images/weather-icons/sunny.png" />
+                </div>
+                <div class="hiking-text-result">
+                    <h2 class="result-yes text-center">Yes! You should go hiking!</h2>
+                    <h2 class="result-no text-center">No! You should not go hiking!</h2>
+                    <div class="main-reason-wrapper text-center">
+                        We decided this mainly because:
+                        <div class="main-reason text-center">
+
+                        </div>
+                    </div>
+                    <div class="weather-warning-results text-center">
+                        <div class="weather-warnings text-center">
+                            <h3>But, you might want to take this into consideration:</h3>
+                            <ul class="warnings-list text-center">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary explanation-btn">Explanation</a>
+                <div class="explanation text-center">
+                    Here's what we used to make our decision:
+                    <div class="decision-data">
+
+                    </div>
+                </div>
             </div>
         </x-card>
 
