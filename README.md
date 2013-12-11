@@ -15,3 +15,7 @@ the config object.
 
 This app is based on the FireFox OS Boilerplate App by Rob Nyman (https://github.com/robnyman/Firefox-OS-Boilerplate-App)
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jcerise/shouldihike/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
